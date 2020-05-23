@@ -18,7 +18,7 @@ open import Relation.Nullary
 module Derivative.Antimirov where
   open import Base.EmptynessTest
   open import Base.Regex
-  module LM = Monoid (Data.List.monoid Regex)
+  module LM = Monoid (++-monoid Regex)
 
 
   Regexes = List Regex

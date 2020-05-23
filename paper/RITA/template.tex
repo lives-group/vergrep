@@ -1,0 +1,270 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stylish Article
+% LaTeX Template
+% Version 2.1 (1/10/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) 
+% With extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[fleqn,10pt]{SelfArx} % Document font size and equations flushed left
+\usepackage[english]{babel} % Specify a different language here - english by default
+\usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
+\usepackage{url} % Required to insert dummy text. To be removed otherwise
+\usepackage{balance}
+
+\usepackage{hyperref}
+\usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage{textcomp}
+\usepackage{gensymb} % degree. ie 360º
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{multirow}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{graphicx}
+\usepackage[labelfont=bf]{subcaption}
+
+
+
+\usepackage{tcolorbox}% http://ctan.org/pkg/tcolorbox
+\definecolor{mycolor}{rgb}{0,0,0}% Rule colour
+\makeatletter
+\newcommand{\mybox}[1]{%
+	\setbox0=\hbox{#1}%
+	\setlength{\@tempdima}{\dimexpr\wd0+13pt}%
+	\begin{tcolorbox}[colframe=mycolor,boxrule=0.5pt,arc=4pt,
+		left=6pt,right=6pt,top=6pt,bottom=6pt,boxsep=0pt,width=\@tempdima]
+		#1
+	\end{tcolorbox}
+}
+\makeatother
+\usepackage[resetlabels,labeled]{multibib}
+\newcites{A}{Appendix}
+\usepackage[num]{abntex2cite}
+\citebrackets[]
+%----------------------------------------------------------------------------------------
+%	COLUMNS
+%----------------------------------------------------------------------------------------
+\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
+\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+%----------------------------------------------------------------------------------------
+%	COLORS
+%----------------------------------------------------------------------------------------
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=color2,citecolor=color1,linkcolor=color1,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
+%----------------------------------------------------------------------------------------
+%	ARTICLE INFORMATION
+%----------------------------------------------------------------------------------------
+\JournalInfo{\color{gray}\normalsize\sffamily\bfseries Revista de Informática Teórica e Aplicada - RITA - ISSN 2175-2745\\ Vol.~XX, Num.~XX~(2018)~11-XX} % Journal information
+\Archive{\mybox{RESEARCH ARTICLE}} % Type of Article: Researh, Review, Tutorial, Study Case
+
+\PaperTitle{Title English} % Article title - English
+
+\ShortTitle{Short Title English} % Short Article title - English
+
+\Titulo{Title Portuguese} % Article title - Portuguese
+
+\PaperVol{XX} % Volume 
+\PaperNum{X} % Number 
+\PaperAno{YYYY} % Year of Publication
+
+
+\Authors{Author 1\textsuperscript{1}*, Author 2\textsuperscript{2},  Author 3\textsuperscript{1}} % Authors
+\affiliation{\textsuperscript{1}\textit{Department, University, Country}} % Author affiliation
+\affiliation{\textsuperscript{2}\textit{Department, University, Country}} % Author affiliation
+\affiliation{*\textbf{Corresponding author}: author@mail} % Corresponding author
+
+\Keywords{Keyword1 --- Keyword2 --- Keyword3 --- Keyword4}
+
+\newcommand{\keywordname}{Keywords} % Defines the keywords heading name
+
+\PalavrasChave{palavra1 --- palavra2 --- palavra3 --- palavra4} 
+
+
+\Doi{http://dx.doi.org/10.22456/2175-2745.XXXX} % DOI
+\DateR{dd/mm/yyyy} % Received
+\DateA{dd/mm/yyyy} % Accepted
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\Abstract{\lipsum[1]~}
+
+\Resumo{\lipsum[1]~}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\setcounter{page}{11}
+
+\flushbottom % Makes all text pages the same height
+\maketitle % Print the title and abstract box
+\thispagestyle{empty} % Removes page numbering from the first page
+%\tableofcontents % Print the contents section
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+
+
+\section{Introduction} % The \section*{} command stops section numbering
+
+\addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
+
+\lipsum[1-3] % Dummy text
+and some mathematics $\cos\pi=-1$ and $\alpha$ in the text\footnote{And some mathematics $\cos\pi=-1$ and $\alpha$ in the text.}.
+
+%------------------------------------------------
+
+\section{Methods}
+
+\begin{figure*}[ht]\centering % Using \begin{figure*} makes the figure take up the entire width of the page
+	\includegraphics[width=\linewidth]{view}
+	\caption{Wide Picture}
+	\label{fig:view}
+\end{figure*}
+
+\lipsum[4] \cite{article}% Dummy text
+
+\begin{equation}
+\cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
+\label{eq:refname2}
+\end{equation}
+
+\lipsum[5] % Dummy text
+
+\begin{enumerate}[noitemsep] % [noitemsep] removes whitespace between the items for a compact look
+	\item First item in a list
+	\item Second item in a list
+	\item Third item in a list
+\end{enumerate}
+
+\subsection{Subsection}
+
+\lipsum[6] % Dummy text
+
+\paragraph{Paragraph} \lipsum[7] % Dummy text
+\paragraph{Paragraph} \lipsum[8] % Dummy text
+
+\subsection{Subsection}
+
+\lipsum[9] % Dummy text
+
+\begin{figure}[ht]\centering
+	\includegraphics[width=\linewidth]{results}
+	\caption{In-text Picture}
+	\label{fig:results}
+\end{figure}
+
+Reference to Figure \ref{fig:results}.
+
+%------------------------------------------------
+
+\section{Results and Discussion}
+
+\lipsum[10] % Dummy text
+
+\subsection{Subsection}
+
+\lipsum[11] % Dummy text
+
+\begin{table}[hbt]
+	\caption{Table of Grades}
+	\centering
+	\begin{tabular}{llr}
+		\toprule
+		\multicolumn{2}{c}{Name} \\
+		\cmidrule(r){1-2}
+		First name & Last Name & Grade \\
+		\midrule
+		John & Doe & $7.5$ \\
+		Richard & Miles & $2$ \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:label}
+\end{table}
+
+\subsubsection{Subsubsection}
+
+\lipsum[12] % Dummy text
+
+\begin{description}
+	\item[Word] Definition
+	\item[Concept] Explanation
+	\item[Idea] Text
+\end{description}
+
+\subsubsection{Subsubsection}
+
+\lipsum[13] % Dummy text
+
+\begin{itemize}[noitemsep] % [noitemsep] removes whitespace between the items for a compact look
+	\item First item in a list
+	\item Second item in a list
+	\item Third item in a list
+\end{itemize}
+
+\subsubsection{Subsubsection}
+
+\lipsum[14] % Dummy text
+
+\subsection{Subsection}
+
+\lipsum[15-23] % Dummy text
+
+
+
+
+\section*{Acknowledgements}
+
+\lipsum[1]
+
+\section*{Author contributions}
+\lipsum[1]~
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+
+\phantomsection
+
+
+\makeatletter
+\renewcommand\@biblabel[1]{{\parbox{0.7cm}{[#1]}}}
+\makeatother
+% References
+\renewcommand{\refname}{References}
+\bibliography{sample}
+
+
+
+
+
+\balance
+\end{document}

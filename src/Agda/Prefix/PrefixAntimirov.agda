@@ -25,7 +25,7 @@ module Prefix.PrefixAntimirov where
   Any-lemma (x ∷ es) pr (here refl) = Here pr
   Any-lemma (x ∷ es) pr (there pr1) = There (Any-lemma es pr pr1)
 
-  module LC = Monoid (Data.List.monoid Char)
+  module LC = Monoid (++-monoid Char)
 
   Any-Prefix : ∀ {ys zs} es → ys ∈⟨ es ⟩ → Any (IsPrefix (ys ++ zs)) es
   Any-Prefix [] ()

@@ -38,9 +38,9 @@ module BitCoded.BitRegex where
     data _∈[[_]] : List Char → BitRegex → Set where
       eps  : ∀ bs → [] ∈[[ eps bs ]]
       char : ∀ bs c → [ c ] ∈[[ char bs c ]]
-      inl  : ∀ {l xs}(r : BitRegex) bs →  xs ∈[[ l ]] → xs ∈[[ choice bs l r ]]
-      inr  : ∀ {r xs}(l : BitRegex) bs →  xs ∈[[ r ]] → xs ∈[[ choice bs l r ]]
-      cat  : ∀ {l r xs ys zs} bs → xs ∈[[ l ]] → ys ∈[[ r ]] → zs ≡ xs ++ ys → zs ∈[[ cat bs l r ]]
+      inl  : ∀ {l xs}(r : BitRegex) bs →  xs ∈[[ l ]] → xs ∈[[ (choice bs l r) ]]
+      inr  : ∀ {r xs}(l : BitRegex) bs →  xs ∈[[ r ]] → xs ∈[[ (choice bs l r) ]]
+      cat  : ∀ {l r xs ys zs} bs → xs ∈[[ l ]] → ys ∈[[ r ]] → zs ≡ xs ++ ys → zs ∈[[ (cat bs l r) ]]
       star-[] : ∀ {l} bs → [] ∈[[ star bs l ]]
       star-∷ : ∀ {l x xs xss ys} bs → (x ∷ xs) ∈[[ l ]] → xss ∈[[ star [] l ]] → ys ≡ x ∷ xs ++ xss → ys ∈[[ star bs l ]]
 
@@ -48,12 +48,12 @@ module BitCoded.BitRegex where
     []-cat (cat {xs = []} bs pr pr' refl) = pr , pr'
     []-cat (cat {xs = x ∷ xs} bs pr pr' ())
 
-    char-∈-invert : ∀ {x y bs xs} → (x ∷ xs) ∈[[ char bs y ]] → x ≡ y × xs ≡ []
-    char-∈-invert (char bs x) = refl , refl
+    char-∈-invert : ∀ {x y xs bs} → (x ∷ xs) ∈[[ char bs y ]] → x ≡ y × xs ≡ [] × bs ≡ []
+    char-∈-invert (char x) = refl , refl , refl
 
     nullDec : ∀ (t : BitRegex) → Dec ([] ∈[[ t ]])
     nullDec empty = no (λ ())
-    nullDec (eps bs) = yes (eps bs)
+    nullDec (eps bs) = yes (eps [])
     nullDec (char bs c) = no (λ ())
     nullDec (choice bs t t') with nullDec t | nullDec t'
     ...| yes pr | pr'     = yes (inl t' bs pr) 
@@ -106,6 +106,7 @@ module BitCoded.BitRegex where
       internalize-erase (e ∙ e') rewrite internalize-erase e | internalize-erase e' = refl
       internalize-erase (e + e') rewrite erase-fuse-internalize {bs = [ 0# ]} e | erase-fuse-internalize {bs = [ 1# ]} e' = refl
       internalize-erase (e ⋆) rewrite internalize-erase e = refl
+
 
     bitSemSound : ∀ {xs e} → xs ∈[[ e ]] → xs ∈[ erase e ]
     bitSemSound (eps bs) = ε

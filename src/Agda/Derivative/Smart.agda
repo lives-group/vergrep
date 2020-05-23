@@ -1,6 +1,7 @@
 open import Algebra
 open import Data.Char
 open import Data.List as List
+open import Data.List.Properties
 open import Data.Product
 
 open import Function
@@ -121,7 +122,7 @@ module Derivative.Smart where
   e `∙ ε = e
   e `∙ e' = e ∙ e'
 
-  module LM = Monoid (List.monoid Char)
+  module LM = Monoid (Data.List.Properties.++-monoid Char)
 
   `∙-sound : ∀ (e e' : Regex){xs} → xs ∈[ e `∙ e' ] → xs ∈[ e ∙ e' ]
   `∙-sound ∅ ∅ ()

@@ -83,14 +83,13 @@ module Base.Regex where
   ∙-assocl (_∙_⇒_ {ys = zs}(_∙_⇒_ {xs = xs}{ys = ys} pr pr₁ refl) pr₂ refl)
     = pr ∙ (pr₁ ∙ pr₂ ⇒ refl) ⇒ LM.assoc xs ys zs
       where
-        module LM = Monoid (Data.List.monoid Char)
+        module LM = Monoid (Data.List.Properties.++-monoid Char)
 
   ∙-assocr : ∀ {e e' e'' s} → s ∈[ e ∙ (e' ∙ e'') ] → s ∈[ (e ∙ e') ∙ e'' ]
   ∙-assocr (_∙_⇒_ {xs = zs} pr (_∙_⇒_ {xs = xs}{ys = ys} pr1 pr2 refl) refl)
     = (pr ∙ pr1 ⇒ refl) ∙ pr2 ⇒ (sym $ LM.assoc zs xs ys)
       where
-        module LM = Monoid (Data.List.monoid Char)
-  
+        module LM = Monoid (Data.List.Properties.++-monoid Char)
 
   open import Relation.Binary
 
